@@ -1,0 +1,391 @@
+Agenda : [Typescript]
+
+- what is ts?
+- TS Vs JS
+- data types
+- var,let,const
+- Function
+- Arrow function
+- Strings
+- Spread & Rest operator
+- Type assertion(comparable to type casting)
+- OOP(apply decorators)
+
+TYPESCRIPT :
+
+- Open source ,object oriented programming language (object,class,inheritance,interfaces)
+
+npm install -g typescript
+
+- SUPERSET OF JAVASCRIPT
+
+- Strongly typed language
+
+- Compile time error handling
+
+- Browser cannot run a TS file
+
+- ts ---> compiler --->.js file-->rendered on browser
+
+JS VS TS:
+
+JS :
+
+- not strongly typed
+- browser support
+- just a scripting language
+- doesnt support generics
+
+
+
+TS:
+- strongly typed
+- doesnt support on  browser
+- oop language
+- support generics 
+
+Features :
+- object oriented language
+- support JS libraries
+- JS IS TS
+- TS is portable
+- DOM Manipulation
+- TS is more than JS 
+
+Components :
+- Language (syntax,structure,keywords,type annotation)
+- Compiler : app.ts ----->compiled(tsc app.ts) ----> app.js 
+- Language services :code formatting,intellisense,highligting errors,code completing.
+
+Function :
+ set of code that does a task
+
+function fn_name()
+{
+//set of stmts
+}
+
+
+Typescript types :
+
+- Static , Generic , decorators
+- Static : built in(number,string,null,boolean,void),User defines(class,enum,interface,function,tuple)
+
+
+Generic : <T> 
+
+function identity<Type>(arg:Type) : Type
+{
+    return arg;
+}
+
+
+//var user1="Jenifer";
+//var user2=10;
+
+let user1=identity<string>("JENIFER");
+let user2=identity<number>(10);
+console.log(user1);
+console.log(user2);
+
+
+Decorators :
+
+@ symbol
+
+- Attached to a class,method,property,accessor,parameter.
+
+Experimental decorator : @f()
+
+class decorator : @sealed
+method decorator :@enumerable
+accessor : get & set   (@configurable)
+Property: @format
+parameters: @validate
+
+
+
+function first()
+{
+console.log("First() factory evaluated");
+return function(target:any,propertyKey:string,descriptor:PropertyDescriptor)
+{
+console.log("First() called");
+};
+}
+function second()
+{
+    console.log("second() factory evaluated");
+    return function(target:any,propertyKey:string,descriptor:PropertyDescriptor)
+    {
+    console.log("second() called");
+    };
+}
+
+class Example{
+    @first()
+    @second()
+    method(){}
+}
+
+
+
+Variable : memory location to store a value
+
+- start with alphabets
+- _ ,$ : special characters
+- eg : company12
+
+var : declare and redeclare 
+let : declare ,no redeclaration ,block scoped
+const : global value that need not to be chaged,eg :PI.
+
+Arrow function: lambda expression
+
+=>
+
+(p1,p2,p3....) => expression
+
+Strings : sequence of characters
+
+methods :
+concat()
+substring()
+charAt()
+toLowerCase()
+toUpperCase();
+
+Rest operator:
+
+accept indefinite number of arguments 
+
+function getAverage(...args:number[])
+{
+    var avg=args.reduce(function(a,b){
+        return a+b;
+    },0);
+
+    return avg;
+}
+
+console.log("Average of 3 numbers " + getAverage(10,20,30));
+console.log("Average of 5 numbers " + getAverage(10,20,30,40,50));
+
+console.log("Average of 7 numbers " + getAverage(10,20,30,40,50,60,70));
+
+Spread operator : copy your content from one array to another array
+
+function spreadops()
+{
+    const arr1=["volkwagen","benz","bmw"];
+    const arr2=["Nexa","Tata","Kia"];
+    const arr3=[...arr1,...arr2];
+    console.log(arr3);
+}
+
+spreadops();
+
+Type Assertion : tell the compiler to treat the entity as a different type.
+
+any ---> number
+number--->string 
+
+How ???
+
+- <>   angular brackets
+- as keyword
+
+OOP :
+- Object
+- Class
+- constructor
+
+
+- inheritance
+- function overloading
+- interface 
+
+
+object :
+
+- real time entity
+- with attributes and behaviours
+
+eg :
+laptop
+
+a: name,color,year,model
+b:surfing,gamin,..app
+
+table
+
+a:green color,material(wood,pla..),shape,name
+b:book o it,fold\unfold,utility
+
+
+Class:
+
+collection of objects
+- blueprint for creating objects
+
+eg,
+
+object :laptop,desktop,mobile,head phone
+class: electronic gadget
+
+object : table,chair,tea table,mooda,foot rest
+class : furniture
+
+class contains :
+
+class classname
+{
+//field eg : var x=10;
+//methods eg function add(){...}
+//constructor 
+//another nested class,interface,
+
+}
+
+constructor : will only initiaze the values
+
+class Student
+{
+
+    //data fields
+    Rollno:number;
+    Name:string;
+
+    //constructor
+
+    constructor(_Rollno:number,_Name:string)
+    {
+    this.Rollno=_Rollno;
+    this.Name=_Name;
+    }
+
+    //methods
+    display():void{
+        console.log("Roll Number :" +this.Rollno);
+        console.log("Student Name :" +this.Name);
+    }
+
+
+}
+
+//creating objects
+
+var obj1=new Student(101,'Jeni');
+var obj2=new Student(102,'Amy');
+var obj3=new Student(103,'Mitra');
+
+
+//Method call
+
+obj1.display();
+obj2.display();
+obj3.display();
+
+
+Function overloading :
+
+same function with same name and different datatypes 
+
+
+function display(a:number,b:number):number;
+
+function display(a:string,b:string):string;
+
+function display(a:string,b:string,c:string):string;
+
+function display(a:any,b:any):any{
+    return a+b;
+}
+
+
+console.log(display(10,20));
+console.log(display("hello","world"));
+console.log(display("welcome","to","Typescript"));
+
+Inheritance :
+
+- one class inherit the properties of another class
+
+- parent class : super class \ base class
+- child class : sub class \ derived class
+
+class derived_class extends super_class
+{
+//code here
+}
+
+class Car
+{
+        color:string;
+        constructor(_color:string)
+        {
+            this.color=_color;
+
+        }
+   
+}
+class Audi extends Car{
+    price:number;
+    constructor(color:string,_price:number)
+    {
+       super(color);
+       this.price=_price;
+    }
+    display():void{
+        console.log("Colour of Audi is " +this.color);
+        console.log("Price of Audi is " +this.price);
+    }
+
+}
+
+/*class Volkswagen extends Car{
+
+    modelYear : number;
+    constructor(color:string,_modelYear:number)
+    {
+       super(color);
+       this.modelYear=_modelYear;
+    }
+    display():void{
+        console.log("Colour of Volkswagen is " +this.color);
+        console.log("Price of Volkswagen is " +this.modelYear);
+    }
+
+}
+*/
+
+let a1=new Audi("black",8500000);
+a1.display();
+
+/*let v1=new Volkswagen("Red Polo",2022);
+v1.display();*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
